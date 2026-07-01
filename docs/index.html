@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinigest - Página do Projeto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Clinigest</h1>
+      <p>Sistema web para gestão de clínica psicológica, desenvolvido com Flask, SQLite, HTML, CSS e JavaScript.</p>
+      <div class="buttons">
+        <a href="https://github.com/natiwelter/clinigest" target="_blank">Ver repositório</a>
+        <a href="#execucao">Como executar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Sobre o projeto</h2>
+      <p>
+        O Clinigest foi criado para facilitar a organização de pacientes, consultas, sessões e movimentações financeiras de uma clínica psicológica.
+        A proposta é centralizar informações importantes em uma aplicação simples, organizada e acessível localmente.
+      </p>
+    </section>
+
+    <section>
+      <h2>Principais funcionalidades</h2>
+      <div class="cards">
+        <article><h3>Pacientes</h3><p>Cadastro, edição, prioridade e relatório individual.</p></article>
+        <article><h3>Agenda</h3><p>Agendamento, edição e acompanhamento de consultas.</p></article>
+        <article><h3>Sessões</h3><p>Registro de observações e histórico de atendimentos realizados.</p></article>
+        <article><h3>Financeiro</h3><p>Controle de entradas, saídas e saldo geral da clínica.</p></article>
+        <article><h3>Calendário</h3><p>Visualização das consultas pendentes em formato de calendário.</p></article>
+        <article><h3>Dashboard</h3><p>Resumo com indicadores importantes do sistema.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Diferenciais técnicos</h2>
+      <ul>
+        <li>Aplicação organizada em rotas Flask.</li>
+        <li>Uso de banco de dados SQLite com SQLAlchemy.</li>
+        <li>Sistema de login para restringir o acesso.</li>
+        <li>Templates HTML reutilizáveis com estrutura base.</li>
+        <li>Integração entre consultas, pacientes e financeiro.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tecnologias utilizadas</h2>
+      <div class="tags">
+        <span>Python</span><span>Flask</span><span>Flask-SQLAlchemy</span><span>SQLite</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+      </div>
+    </section>
+
+    <section id="execucao">
+      <h2>Como executar a aplicação</h2>
+      <p>O GitHub Pages hospeda apenas a página de apresentação. Para rodar o sistema Flask, execute localmente:</p>
+      <pre><code>git clone https://github.com/natiwelter/clinigest.git
+cd clinigest
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python app.py</code></pre>
+      <p>Depois, acesse:</p>
+      <pre><code>http://127.0.0.1:5000</code></pre>
+      <p>Senha de demonstração: <strong>terapia123</strong></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto acadêmico desenvolvido por Natalia Welter.</p>
+  </footer>
+</body>
+</html>

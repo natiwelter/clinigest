@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+
+  <!-- Formulário de nova consulta -->
+  <div class="col-md-5">
+    <div class="card shadow-sm rounded p-3 mb-4">
+      <h4 class="card-title">Nova Consulta</h4>
+      <form method="POST">
+        
+        <div class="mb-3">
+          <label class="form-label">Paciente</label>
+          <select class="form-select" name="paciente_id" required>
+            {% for p in pacientes %}
+              <option value="{{ p.id }}">{{ p.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Data</label>
+          <input type="date" class="form-control" name="data" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Hora</label>
+          <input type="time" class="form-control" name="hora" required>
+        </div>
+
+        <button class="btn btn-success w-100" type="submit">
+          Agendar
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Listagem de consultas -->
+  <div class="col-md-7">
+    <h4>Agenda de Consultas</h4>
+
+    {% for c in consultas %}
+    <div class="card mb-3 shadow-sm rounded">
+      <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-center">
+          
+          <div>
+            <h5 class="card-title mb-1">{{ c.paciente.nome }}</h5>
+
+            <p class="card-text mb-1">
+              <i class="bi bi-calendar-event"></i>
+              {{ c.data.strftime('%d/%m/%Y') }}
+              <br>
+              <i class="bi bi-clock"></i>
+              {{ c.hora.strftime('%H:%M') }}
+            </p>
+
+            {% if c.status == 'realizada' %}
+              <span class="badge bg-success">Realizada</span>
+            {% elif c.status == 'cancelada' %}
+              <span class="badge bg-danger">Cancelada</span>
+            {% else %}
+              <span class="badge bg-primary">Agendada</span>
+            {% endif %}
+          </div>
+
+          <div class="text-end">
+
+            <a href="/consulta/atender/{{ c.id }}" class="btn btn-success btn-sm mb-2">
+              <i class="bi bi-play-circle"></i> Atender
+            </a>
+
+            <a href="/agenda/apagar/{{ c.id }}" class="btn btn-outline-danger btn-sm mb-2">
+              <i class="bi bi-trash"></i> Apagar
+            </a>
+
+            <!-- 💰 BOTÃO DE PAGAMENTO (NOVO) -->
+            {% if c.financeiro %}
+  <span class="badge bg-success mt-2">Pago</span>
+{% else %}
+  <form method="POST" action="/financeiro/lancar/{{ c.id }}">
+    <div class="input-group input-group-sm mt-2">
+      <input 
+        type="number" 
+        step="0.01" 
+        name="valor" 
+        class="form-control"
+        placeholder="Valor"
+        required
+      >
+      <button class="btn btn-success" type="submit">
+        <i class="bi bi-cash"></i>
+      </button>
+    </div>
+  </form>
+{% endif %}
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+{% endblock %}

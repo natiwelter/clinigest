@@ -1,0 +1,11 @@
+:root {
+  --primary: #4A90E2;
+  --secondary: #50E3C2;
+  --danger: #E94E77;
+  --success: #7ED321;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border: none;
+}

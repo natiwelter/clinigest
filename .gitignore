@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+.venv/
+venv/
+env/
+
+# Flask/variáveis locais
+.env
+instance/
+
+# Banco local
+*.db
+
+# Editor/Sistema
+.vscode/
+.DS_Store
+Thumbs.db

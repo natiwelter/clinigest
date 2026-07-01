@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+  <!-- Título -->
+  <div class="mb-4">
+    <h2>Dashboard</h2>
+    <p class="text-muted">Resumo geral do sistema</p>
+  </div>
+
+  <!-- CARDS RESUMO -->
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Pacientes</h6>
+          <h3>{{ total_pacientes }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Consultas Hoje</h6>
+          <h3>{{ consultas_hoje }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Entradas</h6>
+          <h4 class="text-success">R$ {{ entradas }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Saldo</h6>
+          <h4 class="text-primary">R$ {{ saldo }}</h4>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MENU PRINCIPAL -->
+  <div class="mt-5">
+    <h4 class="mb-3">Acessos rápidos</h4>
+
+    <div class="row">
+
+      <!-- PACIENTES -->
+      <div class="col-md-3">
+        <a href="/pacientes" class="text-decoration-none">
+          <div class="card shadow-sm h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-people fs-1 text-primary"></i>
+              <h5 class="mt-2">Pacientes</h5>
+              <p class="text-muted small">Cadastro e gestão de pacientes</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- AGENDA -->
+      <div class="col-md-3">
+        <a href="/agenda" class="text-decoration-none">
+          <div class="card shadow-sm h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-calendar-check fs-1 text-success"></i>
+              <h5 class="mt-2">Agenda</h5>
+              <p class="text-muted small">Consultas e agendamentos</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- FINANCEIRO -->
+      <div class="col-md-3">
+        <a href="/financeiro" class="text-decoration-none">
+          <div class="card shadow-sm h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-cash-stack fs-1 text-warning"></i>
+              <h5 class="mt-2">Financeiro</h5>
+              <p class="text-muted small">Controle de entradas e saídas</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- RELATÓRIOS -->
+      <div class="col-md-3">
+        <a href="/relatorios" class="text-decoration-none">
+          <div class="card shadow-sm h-100 text-center">
+            <div class="card-body">
+              <i class="bi bi-bar-chart fs-1 text-danger"></i>
+              <h5 class="mt-2">Relatórios</h5>
+              <p class="text-muted small">Análises e desempenho</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+
+  <!-- HISTÓRICO -->
+  <div class="col-md-5">
+    <div class="card p-3 mb-3">
+      <h5><i class="bi bi-clock-history"></i> Histórico</h5>
+
+      {% for h in historico %}
+        <div class="mb-2">
+          <small class="text-muted">
+            {{ h.data.strftime('%d/%m/%Y') }}
+          </small>
+          <p class="mb-1">
+            {{ h.observacao[:100] }}...
+          </p>
+          <hr>
+        </div>
+      {% else %}
+        <p class="text-muted">Sem histórico</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- ATENDIMENTO -->
+  <div class="col-md-7">
+    <div class="card p-3">
+
+      <h4>{{ consulta.paciente.nome }}</h4>
+
+      <p class="text-muted">
+        {{ consulta.data.strftime('%d/%m/%Y') }} -
+        {{ consulta.hora.strftime('%H:%M') }}
+      </p>
+
+      <form method="POST">
+
+        <div class="mb-3">
+          <label class="form-label">Anotações da sessão</label>
+          <textarea 
+            name="observacao"
+            class="form-control"
+            rows="10"
+            placeholder="Escreva tudo que observar durante a sessão..."
+          >{{ consulta.observacao or '' }}</textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+
+          <!-- salvar sem concluir -->
+          <button name="acao" value="salvar" class="btn btn-primary">
+            💾 Salvar
+          </button>
+
+          <!-- concluir sessão -->
+          <button name="acao" value="concluir" class="btn btn-success">
+            ✅ Concluir Sessão
+          </button>
+
+          <a href="/agenda" class="btn btn-secondary">
+            Voltar
+          </a>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

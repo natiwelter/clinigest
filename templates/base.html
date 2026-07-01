@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CliniGest</title> <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            /* fundo suave */
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #4A90E2, #50E3C2);
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            margin-right: 1rem;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #000 !important;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            border-radius: 8px;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+</head>
+
+<body> <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container"> <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='logo.png') }}" height="60">
+            </a> <a class="nav-link" href="/calendario">
+                <i class="bi bi-calendar3"></i> Calendário
+                </a> <button class="navbar-toggler"
+                type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> <span
+                    class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto"> <a class="nav-link" href="/pacientes"><i class="bi bi-people"></i>
+                        Pacientes</a> <a class="nav-link" href="/agenda"><i class="bi bi-calendar-event"></i> Agenda</a> <a class="nav-link" href="/sessoes">
+                            <i class="bi bi-check-circle"></i> Sessões
+                            </a> <a class="nav-link" href="/financeiro"><i class="bi bi-cash-stack"></i> Financeiro</a> <a
+                        class="nav-link" href="/anotacoes"><i class="bi bi-journal-text"></i> Anotações</a>
+                    <!-- Botão de sair destacado --> <a class="btn btn-danger btn-sm ms-3" href="/logout"> <i
+                            class="bi bi-box-arrow-right"></i> Sair </a> </div>
+            </div>
+        </div>
+    </nav> <!-- Conteúdo principal -->
+    <main class="container py-4">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for msg in messages %}
+                <div class="alert alert-success">
+                {{ msg }}
+                </div>
+            {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+
+</main> <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

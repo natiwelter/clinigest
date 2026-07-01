@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4 class="mb-4">
+  <i class="bi bi-journal-text"></i>
+  Anotações - {{ paciente.nome }}
+</h4>
+
+{% for c in consultas %}
+  <div class="card mb-3 shadow-sm rounded">
+    <div class="card-body">
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <strong>
+            <i class="bi bi-calendar-event"></i>
+            {{ c.data.strftime('%d/%m/%Y') }}
+          </strong>
+          <br>
+          <small class="text-muted">
+            <i class="bi bi-clock"></i>
+            {{ c.hora.strftime('%H:%M') }}
+          </small>
+        </div>
+
+        <span class="badge bg-secondary">
+          Sessão
+        </span>
+      </div>
+
+      <hr>
+
+      {% if c.observacao %}
+        <p class="mb-0">
+          {{ c.observacao }}
+        </p>
+      {% else %}
+        <p class="text-muted mb-0">
+          Nenhuma observação registrada.
+        </p>
+      {% endif %}
+
+    </div>
+  </div>
+{% endfor %}
+
+<a href="/pacientes" class="btn btn-secondary">
+  Voltar
+</a>
+
+{% endblock %}
